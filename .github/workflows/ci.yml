@@ -34,4 +34,4 @@ jobs:
       - name: Build Packages
         shell: pwsh
         run: |
-          msbuild ./dotnet-hello-world /r /p:Configuration=Release 
+          msbuild ./dotnet-hello-world.sln /r /p:Configuration=Release 
