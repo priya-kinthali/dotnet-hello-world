@@ -17,17 +17,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup .NET 8.0.300
+      - name: Setup .NET 7.0.317
         uses: actions/setup-dotnet@v4.0.1
         with:
-          dotnet-version: 8.0.300
+          dotnet-version: 7.0.317
 
-      - name: Run Uno Check
-        shell: pwsh
-        run: |
-          dotnet tool install --global Uno.Check --version 1.25.1
-          uno-check -v --ci --non-interactive --fix --verbose --skip xcode --skip gtk3 --skip vswin --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates
+      # - name: Run Uno Check
+      #   shell: pwsh
+      #   run: |
+      #     dotnet tool install --global Uno.Check --version 1.25.1
+      #     uno-check -v --ci --non-interactive --fix --verbose --skip xcode --skip gtk3 --skip vswin --skip androidemulator --skip androidsdk --skip vsmac --skip dotnetnewunotemplates
 
+      - name: Verify .NET SDK Version
+        run: dotnet --version
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
