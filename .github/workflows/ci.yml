@@ -2,7 +2,7 @@ name: DotNet
 on:
 
   push:
-    branches: [537-testversion]
+    branches: [test-562]
   # workflow_dispatch:
   #   inputs:
   #     buildArgs:
@@ -12,15 +12,15 @@ on:
 
 jobs:
   build:
-    runs-on: windows-2022
+    runs-on: ubuntu-latest
    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup .NET 8.0.300
-        uses: actions/setup-dotnet@v4.0.1
+      - name: Setup .NET 6.0.x
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.300
+          dotnet-version: 6.0.x
 
       # - name: Run Uno Check
       #   shell: pwsh
@@ -39,3 +39,7 @@ jobs:
         shell: pwsh
         run: |
           msbuild ./dotnet-hello-world.sln /r /p:Configuration=Release 
+      - name: Run Tests
+        shell: pwsh
+        run: |
+          dotnet test ./dotnet-hello-world.sln
