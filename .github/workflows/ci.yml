@@ -35,11 +35,16 @@ jobs:
       # - name: Setup MSBuild
       #   uses: microsoft/setup-msbuild@v2
 
-      - name: Build Packages
-        shell: pwsh
-        run: |
-          msbuild ./dotnet-hello-world.sln /r /p:Configuration=Release 
-      - name: Run Tests
-        shell: pwsh
-        run: |
-          dotnet test ./dotnet-hello-world.sln
+      # - name: Build Packages
+      #   shell: pwsh
+      #   run: |
+      #     msbuild ./dotnet-hello-world.sln /r /p:Configuration=Release 
+      # - name: Run Tests
+      #   shell: pwsh
+      #   run: |
+      #     dotnet test ./dotnet-hello-world.sln
+      - name: Build
+        run: dotnet build --no-restore
+
+      - name: Run tests
+        run: dotnet test --no-build --verbosity normal
