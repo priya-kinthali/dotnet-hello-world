@@ -30,6 +30,8 @@ jobs:
 
       - name: Verify .NET SDK Version
         run: dotnet --version
+      - name: List Installed .NET SDK Versions
+        run: dotnet --list-sdks
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
